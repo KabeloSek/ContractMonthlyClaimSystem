@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <!--Button to navigate to Claim-->
+    <p>Monthly Claim System</p>
+    <a href="@Url.Action("Claim","Claim")">
+        <Button>Claim</Button>
+    </a>
+
+    <!--Button to naviagte to track claim-->
+    <a href="@Url.Action("TrackClaim","Claim")">
+        <Button>Track Claim</Button>
+    </a>
+
+    <!--Button to navigate to Review-->
+    <a href="@Url.Action("Review","")">
+        <Button>Review Claims</Button>
+    </a>
+
+    <!--Button to navigate to Approve-->
+    <a href="@Url.Action("Approve","")">
+        <Button>Approve</Button>
+    </a>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

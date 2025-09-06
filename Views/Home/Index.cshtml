@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Welcome</h1>
+<p>Fill in your details to register</p>
+<form>
+    <div>
+        <label for="Name"> Name:</label>
+        <br/>
+        <input type="text" id="name" name="FirstName" />
+    </div>
+    <div>
+        <label for="Surname">Surname:</label>
+        <br/>
+        <input type="text" id="surname" name="Surname"  />
+    </div>
+    <div>
+        <label for="Email">Email:</label>
+        <br/>
+        <input type="email" id="Email" name="Email"  />
+    </div>
+    <div>
+        <label for="Password">Password:</label>
+        <br/>
+        <input type="password" id="Password" name="Password"  />
+    </div>
+    <br/>
+    <button type="submit">Register</button>
+</form>
+
+<p>Do you already have an account?  <a href="@Url.Action("Privacy","Home")">Login</a></p>

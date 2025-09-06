@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<h1>Welcome Back</h1>
+<form>
+    <div>
+        <label for="Email">Email:</label>
+        <br />
+        <input type="email" id="Email" name="Email" />
+    </div>
+    <div>
+        <label for="Password">Password:</label>
+        <br />
+        <input type="password" id="Password" name="Password" />
+    </div>
+    <div>
+       <label for="role">Role:</label>
+       <br/>
+       <select id="role" name="roles">
+           <option value="lecturer">Lecturer</option>
+           <option value="progCoordinator">Program Coordinator</option>
+           <option value="progManager">Program Manager</option>
+       </select>
+    </div>
+    <br />
+    <button type="submit">Login</button>
+    <p>Don't have an account? <a href="@Url.Action("Index","Home")">Register</a></p>
+</form>
