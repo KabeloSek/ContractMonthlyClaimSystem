@@ -1,32 +1,44 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Register Page";
 }
+<!--Linking external styling-->
+<link rel="stylesheet" href="/css/index.css" />
 
-<h1>Welcome</h1>
-<p>Fill in your details to register</p>
-<form>
-    <div>
-        <label for="Name"> Name:</label>
-        <br/>
+<div class="wel">
+    <h1>Welcome</h1>
+    <p>Fill in your details to register</p>
+</div>
+
+<div class="form-container">
+    <div class="form-group">
+        <label for="name">Name:</label><br />
         <input type="text" id="name" name="FirstName" />
     </div>
-    <div>
-        <label for="Surname">Surname:</label>
-        <br/>
-        <input type="text" id="surname" name="Surname"  />
-    </div>
-    <div>
-        <label for="Email">Email:</label>
-        <br/>
-        <input type="email" id="Email" name="Email"  />
-    </div>
-    <div>
-        <label for="Password">Password:</label>
-        <br/>
-        <input type="password" id="Password" name="Password"  />
-    </div>
-    <br/>
-    <button type="submit">Register</button>
-</form>
 
-<p>Do you already have an account?  <a href="@Url.Action("Privacy","Home")">Login</a></p>
+    <div class="form-group">
+        <label for="surname">Surname:</label><br />
+        <input type="text" id="surname" name="Surname" />
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="Email" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label><br />
+        <input type="password" id="password" name="Password" />
+    </div>
+
+    <br />
+
+    <!-- Register button (styled link) -->
+    <a href="@Url.Action("HomePg", "Home")" class="btn">Register</a>
+</div>
+
+<div class="login-prompt">
+    <p>
+        Already have an account?
+        <a href="@Url.Action("Privacy","Home")">Login</a>
+    </p>
+</div>

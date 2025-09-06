@@ -6,21 +6,21 @@ namespace CMCS.Prototype.Controllers
     public class ClaimController : Controller
     {
         // GET: /Claim/ClaimForm
-        public IActionResult ClaimForm()
+        public IActionResult Claim()
         {
             // Show the claim submission form
             return View();
         }
 
         // GET: /Claim/Track
-        public IActionResult Track()
+        public IActionResult TrackClaim()
         {
             // Show the claim tracking table (hard-coded data)
             return View();
         }
 
         // GET: /Claim/PreApprove
-        public IActionResult PreApprove()
+        public IActionResult Review()
         {
             // Show the pre-approve page for Programme Coordinator
             return View();
@@ -30,7 +30,14 @@ namespace CMCS.Prototype.Controllers
         public IActionResult Approve()
         {
             // Show the final approve page for Academic Manager
-            return View();
+            return View("~/Views/Home/Approve.cshtml");
         }
+
+       /* public IActionResult HomePg()
+        {
+            // Show the claim submission form
+            return View("~/Views/Home/HomePg.cshtml");
+        }
+       */
     }
 }

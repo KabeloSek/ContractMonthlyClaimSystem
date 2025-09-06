@@ -6,28 +6,65 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <!--Button to navigate to Claim-->
-    <p>Monthly Claim System</p>
-    <a href="@Url.Action("Claim","Claim")">
-        <Button>Claim</Button>
-    </a>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <p>Monthly Claim System</p>
+        </div>
+        <nav class="nav-buttons">
+            <a href="@Url.Action("HomePg","Home")" class="btn">Home</a>
+            <a href="@Url.Action("Claim","Home")" class="btn">Claim</a>
+            <a href="@Url.Action("TrackClaim","Home")" class="btn">Track Claim</a>
+            <a href="@Url.Action("Review","Home")" class="btn">Review Claims</a>
+            <a href="@Url.Action("Approve","Home")" class="btn">Approve</a>
+        </nav>
+    </header>
 
-    <!--Button to naviagte to track claim-->
-    <a href="@Url.Action("TrackClaim","Claim")">
-        <Button>Track Claim</Button>
-    </a>
+    <style>
+        /* Header styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: white; 
+            color: Black;
+            font-family: Arial, sans-serif;
+        }
 
-    <!--Button to navigate to Review-->
-    <a href="@Url.Action("Review","")">
-        <Button>Review Claims</Button>
-    </a>
+        /* Logo / title */
+        .header .logo p {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
 
-    <!--Button to navigate to Approve-->
-    <a href="@Url.Action("Approve","")">
-        <Button>Approve</Button>
-    </a>
-    <div>
-        @RenderBody()
-    </div>
-</body>
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-buttons .btn {
+            padding: 8px 16px;
+            background-color: white; /* white button */
+            color: black; /*Font color*/
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        /*Color of button font when hovering*/
+        .nav-buttons .btn:hover {
+            color: red; 
+        }
+
+        .nav-buttons .btn:active {
+            background-color: red;
+            color: white;
+        }
+
+    </style>
+    </body>
 </html>

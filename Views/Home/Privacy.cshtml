@@ -3,7 +3,7 @@
 }
 
 <h1>Welcome Back</h1>
-<form>
+
     <div>
         <label for="Email">Email:</label>
         <br />
@@ -24,6 +24,10 @@
        </select>
     </div>
     <br />
-    <button type="submit">Login</button>
+    <a href="@Url.Action("HomePg", "Home")">
+    <button>
+        Login
+    </button>
+    </a>
     <p>Don't have an account? <a href="@Url.Action("Index","Home")">Register</a></p>
-</form>
+
