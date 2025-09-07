@@ -1,22 +1,28 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
+<!--Linking external styling-->
+<link rel="stylesheet" href="/css/privacy.css" />
 
-<h1>Welcome Back</h1>
 
-    <div>
-        <label for="Email">Email:</label>
-        <br />
+<div class="wel-Back">
+    <h1>Welcome Back</h1>
+    <p>Please login to continue</p>
+</div>
+
+<div class="form-container">
+    <div class="form-group">
+        <label for="Email">Email:</label><br />
         <input type="email" id="Email" name="Email" />
     </div>
-    <div>
-        <label for="Password">Password:</label>
-        <br />
+
+    <div class="form-group">
+        <label for="Password">Password:</label><br />
         <input type="password" id="Password" name="Password" />
     </div>
-    <div>
-       <label for="role">Role:</label>
-       <br/>
+
+    <div class="form-group">
+       <label for="role">Role:</label><br/>
        <select id="role" name="roles">
            <option value="lecturer">Lecturer</option>
            <option value="progCoordinator">Program Coordinator</option>
@@ -24,10 +30,11 @@
        </select>
     </div>
     <br />
-    <a href="@Url.Action("HomePg", "Home")">
-    <button>
-        Login
-    </button>
-    </a>
-    <p>Don't have an account? <a href="@Url.Action("Index","Home")">Register</a></p>
 
+    <!--login link-->
+    <a href="@Url.Action("HomePg", "Home")" class="btn">Login</a>
+</div>
+
+<div class="register-prompt">
+    <p>Don't have an account? <a href="@Url.Action("Index","Home")">Register</a></p>
+</div>

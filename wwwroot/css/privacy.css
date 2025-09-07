@@ -1,4 +1,5 @@
-﻿body {
+﻿
+body {
     display: flex;
     flex-direction: column; /* stack welcome, form, and login prompt */
     justify-content: center;
@@ -6,16 +7,17 @@
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
 
-/* Welcome section */
-.wel {
+/* Welcome Back section */
+.wel-Back {
     text-align: center;
     margin-bottom: 20px;
 }
 
 /* Form container */
-\.form-container {
+.form-container {
     max-width: 400px;
     width: 100%;
     padding: 20px;
@@ -32,7 +34,8 @@
     margin-bottom: 15px;
 }
 
-/* Inputs */
+    /* Inputs */
+.form-group select,
 .form-group input {
     width: 100%;
     padding: 8px;
@@ -40,7 +43,7 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
-    
+
 /* Button  */
 .btn {
     display: inline-block;
@@ -59,17 +62,17 @@
 }
 
 /* Login prompt */
-.login-prompt {
+.register-prompt {
     margin-top: 15px;
     text-align: center;
 }
 
-.login-prompt a {
+.register-prompt a {
     color: red;
     font-weight: bold;
     text-decoration: none;
 }
 
-.login-prompt a:hover {
+.register-prompt a:hover {
     text-decoration: underline;
 }
