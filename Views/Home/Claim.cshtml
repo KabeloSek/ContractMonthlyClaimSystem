@@ -3,24 +3,48 @@
 }
 @Html.Partial("_Header")
 
-<div>
+<!--linking external styling-->
+
+<link rel="stylesheet" href="/css/claim.css"/>
+
+<div class="clai">
     <h1>Claim Details</h1>
     <p>Ensure that details are correct</p>
 </div>
 
-<div>
+<div class="form-container">
     <div class="form-group">
-        <label for="HoursWorked">Hour worked:</label>
-        <input type="text" id="hoursWorked" name="HoursWorked" />
+        <label for="Name">Name:</label>
+        <input type="text" id="name" name="name" />
     </div>
 
+    <div class="form-group">
+        <label for="Surname">Surname:</label>
+        <input type="text" id="surname" name="surname" />
+    </div>
 
+    <div class="form-group">
+        <label for="Sessions">Sessions:</label>
+        <input type="text" id="sessions" name="sessions" /> 
+    </div>
 
+    <div class="form-group">
+        <label for="hoursWorked">Hour Worked: </label>
+        <input type="text" id="hoursWorked" name="hoursWorked" />
+    </div>
+
+    <div class="form-group">
+        <label for="HourlyRate">Hourly Rate:</label>
+        <input type="text" id="hourlyRate" name="hourlyRate"/>
+    </div>
+
+    <div class="form-group">
+        <label for="UploudFile">Upload Supporting Documents: </label>
+        <input type="file" id="myfile" name="filename"/>
+    </div>
+
+    <a href="@Url.Action("","")" class="btn">Sumbit</a>
 </div>
 
 
 
-
-
-
-<button>Sumbit</button>

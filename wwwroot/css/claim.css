@@ -10,7 +10,7 @@
 }
 
 /* Welcome section */
-.wel {
+.clai {
     text-align: center;
     margin-bottom: 20px;
 }
@@ -33,7 +33,7 @@
     margin-bottom: 15px;
 }
 
-/* Inputs */
+    /* Inputs */
 .form-group input {
     width: 100%;
     padding: 8px;
@@ -41,7 +41,7 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
-    
+
 /* Button  */
 .btn {
     display: inline-block;
@@ -59,18 +59,3 @@
     color: black;
 }
 
-/* Login prompt */
-.login-prompt {
-    margin-top: 15px;
-    text-align: center;
-}
-
-.login-prompt a {
-    color: red;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.login-prompt a:hover {
-    text-decoration: underline;
-}
