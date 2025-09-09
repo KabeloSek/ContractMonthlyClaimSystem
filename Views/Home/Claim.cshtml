@@ -4,47 +4,45 @@
 @Html.Partial("_Header")
 
 <!--linking external styling-->
-
 <link rel="stylesheet" href="/css/claim.css"/>
 
-<div class="clai">
+<div class="claim-page">
     <h1>Claim Details</h1>
     <p>Ensure that details are correct</p>
+
+    <form class="claim-form">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" />
+        </div>
+
+        <div class="form-group">
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" name="surname" />
+        </div>
+
+        <div class="form-group">
+            <label for="sessions">Sessions:</label>
+            <input type="number" id="sessions" name="sessions" />
+        </div>
+
+        <div class="form-group">
+            <label for="hours">Hours Worked:</label>
+            <input type="number" id="hours" name="hours" />
+        </div>
+
+        <div class="form-group">
+            <label for="rate">Hourly Rate:</label>
+            <input type="number" id="rate" name="rate" />
+        </div>
+
+        <div class="form-group">
+            <label for="file">Upload Supporting Documents:</label>
+            <input type="file" id="file" name="file" />
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="claim-btn">Submit</button>
+        </div>
+    </form>
 </div>
-
-<div class="form-container">
-    <div class="form-group">
-        <label for="Name">Name:</label>
-        <input type="text" id="name" name="name" />
-    </div>
-
-    <div class="form-group">
-        <label for="Surname">Surname:</label>
-        <input type="text" id="surname" name="surname" />
-    </div>
-
-    <div class="form-group">
-        <label for="Sessions">Sessions:</label>
-        <input type="text" id="sessions" name="sessions" /> 
-    </div>
-
-    <div class="form-group">
-        <label for="hoursWorked">Hour Worked: </label>
-        <input type="text" id="hoursWorked" name="hoursWorked" />
-    </div>
-
-    <div class="form-group">
-        <label for="HourlyRate">Hourly Rate:</label>
-        <input type="text" id="hourlyRate" name="hourlyRate"/>
-    </div>
-
-    <div class="form-group">
-        <label for="UploudFile">Upload Supporting Documents: </label>
-        <input type="file" id="myfile" name="filename"/>
-    </div>
-
-    <a href="@Url.Action("","")" class="btn">Sumbit</a>
-</div>
-
-
-
