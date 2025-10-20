@@ -1,6 +1,8 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using ContractMonthlyClaimSystem.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Data.SqlClient;
+using System.Diagnostics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ContractMonthlyClaimSystem.Controllers;
 
@@ -13,10 +15,27 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [HttpPost]
     public IActionResult Index()
     {
+        //create an instance for the all_queries with object name create
+        Register create = new Register();
+
+        //call the create_table method
+        create.Create_Lecturer_table();
         return View();
     }
+    [HttpGet]
+    public IActionResult Index(Register user)
+    {
+        if (ModelState.IsValid)
+        {
+            Register register = new Register();
+            register.Store_Lecturer(user.name, user.surname, user.email, user.password);
+        }
+        return View(user);
+    }
+
 
     public IActionResult Privacy()
     {
