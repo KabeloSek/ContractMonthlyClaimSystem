@@ -4,6 +4,6 @@ namespace ContractMonthlyClaimSystem.Models
 {
     public class AllQueries
     {
-        
+       
     }
 }

@@ -31,17 +31,38 @@ public class HomeController : Controller
         if (ModelState.IsValid)
         {
             Register register = new Register();
-            register.Store_Lecturer(user.name, user.surname, user.email, user.password);
+            register.Store_Lecturer(user.name, user.surname, user.email, user.password, user.role);
         }
         return View(user);
     }
 
 
+    [HttpGet]
     public IActionResult Privacy()
     {
         return View();
     }
+    [HttpPost]
+    public IActionResult Privacy(Login user)
+    {
+        //making sure whatever you submit all rules are met, eg. name and age are rquired if user submits for with  only one of these it wont submit the form
+        if (ModelState.IsValid)
+        {
+            Login getLecturer = new Login();
 
+            bool found = getLecturer.searchLecturer(user.name, user.surname, user.email, user.password, user.role);
+            if (found)
+            {
+                return RedirectToAction("HomePg", "Home");
+            }
+            else
+            {
+                Console.WriteLine("Lecturer Not Found");
+            }
+                
+        }
+        return View(user);
+    }
     public IActionResult HomePg()
     {
         // Show the claim submission form

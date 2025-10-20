@@ -16,6 +16,9 @@ namespace ContractMonthlyClaimSystem.Models
         [Required]
         public string password { get; set; }
 
+        [Required]
+        public string role { get; set; }
+
 
         //Declaration of global connectionString variable
         private string connection = @"Server=(localdb)\claim_system;Database=claims_database;";
@@ -30,13 +33,17 @@ namespace ContractMonthlyClaimSystem.Models
                     connect.Open();
 
                     //SQL query to create Lectures table
-                    string LecturerTable = @"CREATE TABLE Lecturers (
+                    string LecturerTable = @"IF OBJECT_ID('dbo.Lecturer','U') IS NULL
+                                            BEGIN
+                                            CREATE TABLE Lecturer (
                                             LecturerID INT PRIMARY KEY IDENTITY(1,1),
                                             Name VARCHAR(50) NOT NULL,
                                             Surname VARCHAR(50) NOT NULL,
                                             Email VARCHAR(100) NOT NULL UNIQUE,
-                                            Password VARCHAR(75) NOT NULL
-                                        );";
+                                            Password VARCHAR(75) NOT NULL,
+                                            Role VARCHAR(50) NOT NULL
+                                           );
+                                            END";
 
 
                     //using function to command query to execute
@@ -57,7 +64,7 @@ namespace ContractMonthlyClaimSystem.Models
             }
         }//end of create_tables method
 
-        public void Store_Lecturer(string name, string surname, string email, string password)
+        public void Store_Lecturer(string name, string surname, string email, string password, string role)
         {
             try
             {
@@ -66,9 +73,9 @@ namespace ContractMonthlyClaimSystem.Models
                     connect.Open();
 
                     //Query to insert into Lecturers table
-                    string insertIntoLectuer = @"INSERT INTO Lecturers
+                    string insertIntoLectuer = @"INSERT INTO Lecturer
                                                  VALUES
-                                                    ('" + name + "','" + surname + "','" + email + "','" + password + "');";
+                                                    ('" + name + "','" + surname + "','" + email + "','" + password + "','"+role+"');";
 
                     //using command to execute query
                     using (SqlCommand insert = new SqlCommand(insertIntoLectuer, connect))

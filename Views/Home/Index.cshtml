@@ -19,7 +19,7 @@
 
     <div class="form-group">
         <label>Surname:</label><br />
-        <input type="text" asp-for="surname" pllaceholder="Enter Surname" />
+        <input type="text" asp-for="surname" placeholder="Enter Surname" />
         <span asp-validation-for="surname" />
     </div>
 
@@ -35,6 +35,15 @@
         <span asp-validation-for="password"/>
     </div>
 
+    <div class="form-group">
+        <label>Role:</label><br />
+        <select asp-for="role">
+            <option value="Lecturer">Lecturer</option>
+            <option value="Program Coordinator">Program Coordinator</option>
+            <option value="Program Manager">Program Manager</option>
+        </select>
+        <span asp-validation-for="role" />
+    </div>
     <br />
 
     <!-- Register styled link -->

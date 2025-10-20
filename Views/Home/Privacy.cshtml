@@ -1,6 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
+﻿@model ContractMonthlyClaimSystem.Models.Login
 <!--Linking external styling-->
 <link rel="stylesheet" href="/css/privacy.css" />
 
@@ -10,31 +8,35 @@
     <p>Please login to continue</p>
 </div>
 
-<div class="form-container">
+<form asp-action="Privacy" method="post" class="form-container">
     <div class="form-group">
-        <label for="Email">Email:</label><br />
-        <input type="email" id="Email" name="Email" />
+        <label>Email:</label><br />
+        <input type="email" asp-for="email" placeholder="Enter email" />
+        <span asp-validation-for="email"/>
     </div>
 
     <div class="form-group">
-        <label for="Password">Password:</label><br />
-        <input type="password" id="Password" name="Password" />
+        <label>Password:</label><br />
+        <input type="password" asp-for="password" placeholder="Enter password" />
     </div>
 
     <div class="form-group">
-       <label for="role">Role:</label><br/>
-       <select id="role" name="roles">
-           <option value="lecturer">Lecturer</option>
-           <option value="progCoordinator">Program Coordinator</option>
-           <option value="progManager">Program Manager</option>
+       <label>Role:</label><br/>
+       <select asp-for="role">
+            <option value="Lecturer">Lecturer</option>
+            <option value="Program Coordinator">Program Coordinator</option>
+            <option value="Program Manager">Program Manager</option>
        </select>
+       <span asp-validation-for="role"/>
     </div>
     <br />
 
     <!--login link-->
-    <a href="@Url.Action("HomePg", "Home")" class="btn">Login</a>
-</div>
+    <button class="btn">Login</button>
+</form>
 
 <div class="register-prompt">
     <p>Don't have an account? <a href="@Url.Action("Index","Home")">Register</a></p>
 </div>
+
+<a href="@Url.Action("HomePg", "Home")" class="btn">HomePage</a>
