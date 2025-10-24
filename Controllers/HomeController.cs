@@ -36,7 +36,6 @@ public class HomeController : Controller
         return View(user);
     }
 
-
     [HttpGet]
     public IActionResult Privacy()
     {
