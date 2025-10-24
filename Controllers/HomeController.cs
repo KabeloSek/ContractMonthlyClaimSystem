@@ -1,4 +1,5 @@
-using ContractMonthlyClaimSystem.Models;
+﻿using ContractMonthlyClaimSystem.Models;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -15,17 +16,17 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    [HttpPost]
+    [HttpGet]
     public IActionResult Index()
     {
-        //create an instance for the all_queries with object name create
+        //create an instance for the Register with object name create
         Register create = new Register();
 
         //call the create_table method
         create.Create_Lecturer_table();
         return View();
     }
-    [HttpGet]
+    [HttpPost]
     public IActionResult Index(Register user)
     {
         if (ModelState.IsValid)
@@ -47,18 +48,31 @@ public class HomeController : Controller
         //making sure whatever you submit all rules are met, eg. name and age are rquired if user submits for with  only one of these it wont submit the form
         if (ModelState.IsValid)
         {
-            Login getLecturer = new Login();
+            Login login = new Login();
 
-            bool found = getLecturer.searchLecturer(user.name, user.surname, user.email, user.password, user.role);
+            bool found = login.searchLogin(user.email, user.password, user.role);
             if (found)
             {
-                return RedirectToAction("HomePg", "Home");
+                //redirect based on role
+                switch (user.role.ToLower())
+                {
+                    case "lecturer":
+                        return RedirectToAction("HomePg", "Home");
+                    case "program_coordinator":
+                        return RedirectToAction("Review", "Home");
+                    case "program_manager":
+                        return RedirectToAction("Approve", "Home");
+                    default:
+                        Console.WriteLine("Role not recognized");
+                        return RedirectToAction("Index", "Home");
+                }
+
             }
             else
             {
-                Console.WriteLine("Lecturer Not Found");
+                Console.WriteLine("User Not Found");
+
             }
-                
         }
         return View(user);
     }
@@ -67,30 +81,63 @@ public class HomeController : Controller
         // Show the claim submission form
         return View("~/Views/Home/HomePg.cshtml");
     }
-
-    public IActionResult Approve()
-    {
-        // Show the final approve page for Academic Manager
-        return View("~/Views/Home/Approve.cshtml");
-    }
-
+    [HttpGet]
     public IActionResult Claim()
     {
+        //create an instance for the Claim with object name claim
+        All_Queries claim = new All_Queries();
+
+        //call the create_table method
+        claim.createClaimsTable();
+
         // Show the claim submission form
-        return View("~/Views/Home/Claim.cshtml");
+        return View("~/Views/Home/Claim.cshtml", claim);
     }
-
-    public IActionResult TrackClaim()
+    [HttpPost]
+    public IActionResult Claim(All_Queries claim)
     {
-        // Show the claim tracking table (hard-coded data)
-        return View("~/Views/Home/TrackClaim.cshtml");
+        if (ModelState.IsValid)
+        {
+            claim.Store_claims(claim.name, claim.sessions, claim.hoursWorked, claim.hourlyRate,claim.document);
+            Console.WriteLine("Claim submitted successfully.");
+        }
+        return View("~/Views/Home/Claim.cshtml", claim);
     }
 
+    [HttpGet]
     public IActionResult Review()
     {
+        //create an instance for claim
+        All_Queries claim = new All_Queries();
+
+        //call the get all claims method
+        List<All_Queries> claims = claim.GetAllClaims();
+
         // Show the pre-approve page for Programme Coordinator
-        return View("~/Views/Home/Review.cshtml");
-    }   
+        return View("~/Views/Home/Review.cshtml", claims);
+    }
+   
+    [HttpGet]
+    public IActionResult Approve()
+    {
+        All_Queries claim = new All_Queries();
+
+        List<All_Queries> claims = claim.GetAllClaims();
+        // Show the final approve page for Academic Manager
+        return View("~/Views/Home/Approve.cshtml", claims);
+    }
+    
+   
+    public IActionResult TrackClaim()
+    {
+        All_Queries claim = new All_Queries();
+
+        List<All_Queries> claims = claim.GetAllClaims();
+        // Show the claim tracking table (hard-coded data)
+        return View("~/Views/Home/TrackClaim.cshtml", claims);
+    }
+
+
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

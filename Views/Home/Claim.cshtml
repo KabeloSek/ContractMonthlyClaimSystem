@@ -1,6 +1,5 @@
-﻿@{
-    ViewData["Title"] = "Claim Page";
-}
+﻿@model ContractMonthlyClaimSystem.Models.All_Queries;
+
 @Html.Partial("_Header")
 
 <!--linking external styling-->
@@ -10,39 +9,39 @@
     <h1>Claim Details</h1>
     <p>Ensure that details are correct</p>
 
-    <form class="claim-form">
+    <form asp-action="Claim" method="post" class="claim-form">
+        
         <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" />
+            <label>Name:</label>
+            <input type="text" asp-for="name" placeholder="Enter your name" />
+            <span asp-validation-for="name"/>
+        </div>
+        <div class="form-group">
+            <label>Sessions:</label>
+            <input type="number" asp-for="sessions" placeholder="Enter number of sessions" />
+            <span asp-validation-for="sessions"/>
         </div>
 
         <div class="form-group">
-            <label for="surname">Surname:</label>
-            <input type="text" id="surname" name="surname" />
+            <label>Hours Worked:</label>
+            <input type="number" asp-for="hoursWorked" placeholder="Amount of hours worked" />
+            <span asp-validation-for="hoursWorked"/>
         </div>
 
         <div class="form-group">
-            <label for="sessions">Sessions:</label>
-            <input type="number" id="sessions" name="sessions" />
+            <label>Hourly Rate:</label>
+            <input type="number" asp-for="hourlyRate" placeholder="Enter Hourly Rate " />
+            <span asp-validation-for="hourlyRate"/>
         </div>
 
         <div class="form-group">
-            <label for="hours">Hours Worked:</label>
-            <input type="number" id="hours" name="hours" />
+            <label>Upload Supporting Documents:</label>
+            <input type="file" asp-for="document" placeholder="submit supporting document" />
+            <span asp-validation-for="document"/>
         </div>
 
         <div class="form-group">
-            <label for="rate">Hourly Rate:</label>
-            <input type="number" id="rate" name="rate" />
-        </div>
-
-        <div class="form-group">
-            <label for="file">Upload Supporting Documents:</label>
-            <input type="file" id="file" name="file" />
-        </div>
-
-        <div class="form-group">
-            <button type="submit" class="claim-btn">Submit</button>
+            <button  type="submit"class="claim-btn">Submit</button>
         </div>
     </form>
 </div>

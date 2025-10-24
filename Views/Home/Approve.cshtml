@@ -1,6 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Approve Page";
-}
+﻿@model List<ContractMonthlyClaimSystem.Models.All_Queries>
 @Html.Partial("_Header")
 
 <!--linking external styling-->
@@ -10,100 +8,32 @@
     <tr>
         <th>ClaimID</th>
         <th>Name</th>
-        <th>Surname</th>
         <th>Sessions</th>
         <th>Hours Worked</th>
         <th>Hourly Rate</th>
-        <th>Total Amount</th>
         <th>Document</th>
         <th>Review Status</th>
         <th>Final Action</th>
 
     </tr>
-    <tr>
-        <td>C001</td>
-        <td>Bruce</td>
-        <td>Wayne</td>
-        <td>4</td>
-        <td>5</td>
-        <td>R20</td>
-        <td>R100</td>
-        <td><a href="#">View Document</a></td>
-        <td>Approved</td>
-        <td>
-            <select>
-                <option value="approve">Approve</option>
-                <option value="reject">Reject</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>C002</td>
-        <td>Clark</td>
-        <td>Kent</td>
-        <td>3</td>
-        <td>4</td>
-        <td>R25</td>
-        <td>R100</td>
-        <td><a href="#">View Document</a></td>
-        <td>Rejected</td>
-        <td>
-            <select>
-                <option value="approve">Approve</option>
-                <option value="reject">Reject</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>C003</td>
-        <td>Tony</td>
-        <td>Stark</td>
-        <td>2</td>
-        <td>6</td>
-        <td>R30</td>
-        <td>R180</td>
-        <td><a href="#">View Document</a></td>
-        <td>Approved</td>
-        <td>
-            <select>
-                <option value="approve">Approve</option>
-                <option value="reject">Reject</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>C004</td>
-        <td>Bruce</td>
-        <td>Wayne</td>
-        <td>5</td>
-        <td>3</td>
-        <td>R15</td>
-        <td>R45</td>
-        <td><a href="#">View Document</a></td>
-        <td> Pending </td>
-        <td>
-            <select>
-                <option value="approve">Approve</option>
-                <option value="reject">Reject</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>C005</td>
-        <td>Diana</td>
-        <td>Prince</td>
-        <td>4</td>
-        <td>5</td>
-        <td>R22</td>
-        <td>R110</td>
-        <td><a href="#">View Document</a></td>
-        <td>Approved</td>
-        <td>
-            <select>
-                <option value="approve">Approve</option>
-                <option value="reject">Reject</option>
-            </select>
-        </td>
-    </tr>
 
+    @foreach(var Claim in Model){
+    <tr>
+
+        <td>@Claim.claimID</td>
+        <td>@Claim.name</td>
+        <td>@Claim.sessions</td>
+        <td>@Claim.hoursWorked</td>
+        <td>@Claim.hourlyRate</td>
+        <td>@Claim.document</td>
+        <td>working on this</td>
+        <td>
+            <select>
+                <option value="approve">Approve</option>
+                <option value="reject">Reject</option>
+            </select>
+        </td>
+    </tr>
+    }
+   
 </table>

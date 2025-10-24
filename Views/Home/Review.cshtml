@@ -1,86 +1,43 @@
-﻿@{
-    ViewData["Title"] = "Review Page";
-}
+﻿@model List<ContractMonthlyClaimSystem.Models.All_Queries>
+
+
 @Html.Partial("_Header")
 
 <!--linking external styling-->
 <link rel="stylesheet" href="/css/review.css" />
 
 <table class="claims-table">
-    <tr>
-        <th>ClaimID</th>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Sessions</th>
-        <th>Hours Worked</th>
-        <th>Hourly Rate</th>
-        <th>Total Amount</th>
-        <th>Document</th>
-        <th>Claim Status</th>
-    </tr>
-    <tr>
-        <td>C001</td>
-        <td>Bruce</td>
-        <td>Wayne</td>
-        <td>4</td>
-        <td>5</td>
-        <td>R20</td>
-        <td>R100</td>
-        <td><a href="#">View Document</a></td>
-        <td>
-            <select>
-                <option value="approve">Approve</option>
-                <option value="reject">Reject</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>C002</td>
-        <td>Clark</td>
-        <td>Kent</td>
-        <td>3</td>
-        <td>4</td>
-        <td>R25</td>
-        <td>R100</td>
-        <td><a href="#">View Document</a></td>
-        <td>
-            <select>
-                <option value="approve">Approve</option>
-                <option value="reject">Reject</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>C003</td>
-        <td>Tony</td>
-        <td>Stark</td>
-        <td>2</td>
-        <td>6</td>
-        <td>R30</td>
-        <td>R180</td>
-        <td><a href="#">View Document</a></td>
-        <td>
-            <select>
-                <option value="approve">Approve</option>
-                <option value="reject">Reject</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>C004</td>
-        <td>Bruce</td>
-        <td>Wayne</td>
-        <td>5</td>
-        <td>3</td>
-        <td>R15</td>
-        <td>R45</td>
-        <td><a href="#">View Document</a></td>
-        <td>
-            <select>
-                <option value="approve">Approve</option>
-                <option value="reject">Reject</option>
-            </select>
-        </td>
-    </tr>
+    <thead>
+        <tr>
+            <th>ClaimID</th>
+            <th>Name</th>
+            <th>Sessions</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Document</th>
+            <th>Claim Status</th>
+            </tr>
+   </thead>
 
+    <tbody>
+        @{
+            foreach (var all_Queries in Model)
+        {
+            <tr>
+                <td>@all_Queries.claimID</td>
+                <td>@all_Queries.name</td>
+                <td>@all_Queries.sessions</td>
+                <td>@all_Queries.hoursWorked</td>
+                <td>@all_Queries.hourlyRate</td>
+                <td>@all_Queries.document</td>
+            <td>
+                <select>
+                    <option value="approve">Approve</option>
+                    <option value="reject">Reject</option>
+                </select>
+            </td>
+            </tr>
+      }
+      }
+    </tbody>
 </table>

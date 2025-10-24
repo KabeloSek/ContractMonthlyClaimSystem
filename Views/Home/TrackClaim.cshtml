@@ -1,29 +1,28 @@
-﻿@{
-    ViewData["Title"] = "TrackClaim Page";
-}
+﻿@model List<ContractMonthlyClaimSystem.Models.All_Queries>
+
 @Html.Partial("_Header")
 
 <!--linking external styling-->
 <link rel="stylesheet" href="/css/review.css"/>
 
 <table class="claims-table">
-    <tr>
-        <th>ClaimID</th>
-        <th>ClaimStatus</th>
-        <th>Reason (If rejected)</th>
-        <th>Finalised Date</th>
+    <thead>
+        <tr>
+            <th>ClaimID</th>
+            <th>ClaimStatus</th>
+            <th>Reason (If rejected)</th>
+            <th>Finalised Date</th>
+        </tr>
+    <thead/>
+    
+        @{
+            foreach (var Claim in Model) {
+                <tr>
+                    <td>@Claim.claimID</td>
+        <td></td>
+        <td></td>
+        <td></td>
     </tr>
-    <tr>
-        <td>C001</td>
-        <td>Approved</td>
-        <td>N/A</td>
-        <td>2023-10-01</td>
-    </tr>
-    <tr>
-        <td>C004</td>
-        <td>Pending</td>
-        <td>Pending</td>
-        <td>2023-10-02</td>
-    </tr>
-
+        }
+        }
 </table>
